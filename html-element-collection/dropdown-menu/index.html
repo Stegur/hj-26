@@ -15,5 +15,26 @@
       <li><a href="#">Выйти</a></li>
     </ul>
   </div>
+  <script>
+
+    const profile = document.getElementsByClassName('wrapper-dropdown');
+    const items = document.getElementsByClassName('dropdown')[0];
+
+
+    function isActive() {
+      this.classList.toggle('active');
+    }
+
+    profile[0].onclick = isActive;
+
+    for (item of items.children){
+        console.log(item);
+        item.onclick = function () {
+           profile[0].classList.toggle('active');
+        }
+    }
+
+
+  </script>
 </body>
 </html>
