@@ -38,5 +38,72 @@
   		</div>
   	</div>
   </div>
+  <script>
+
+    const media = document.getElementsByClassName('mediaplayer')[0];
+    const player = media.getElementsByTagName('audio')[0];
+    //const fa = document.getElementsByClassName('playstate')[0];
+    const play = document.getElementsByClassName('fa-play')[0];
+    const pause = document.getElementsByClassName('fa-pause')[0];
+    const stop = document.getElementsByClassName('stop')[0];
+    const back = document.getElementsByClassName('back')[0];
+    const next = document.getElementsByClassName('next')[0];
+    let title = document.getElementsByClassName('title')[0];
+    //console.log(title);
+
+    // play
+    play.onclick = () => {
+        player.play();
+        media.classList.add('play')
+    };
+
+    // pause
+    pause.onclick = () => {
+        player.pause();
+        media.classList.remove('play');
+    };
+
+    // stop
+    stop.onclick = () => {
+        player.pause();
+        player.currentTime = 0;
+        media.classList.remove('play');
+    };
+
+    const tracks = [
+        'mp3/LA Chill Tour.mp3',
+        'mp3/LA Fusion Jam.mp3',
+        'mp3/This is it band.mp3'
+    ];
+
+    let count = 0;
+    player.src = tracks[count];
+
+    // back
+    back.onclick = () => {
+        count--;
+        if (count < 0) {
+            count = tracks.length - 1;
+        }
+        player.src = tracks[count];
+        player.play();
+        media.classList.add('play');
+        title.title = 'refdsadfasf';
+    };
+
+    //next
+    next.onclick = () => {
+        count++;
+        if (count > tracks.length - 1) {
+            count = 0;
+        }
+        player.src = tracks[count];
+        player.play();
+        media.classList.add('play');
+        title.title = tracks[count].replace('mp3/', '').replace('.mp3', ''); // Как вместить в 1 условие?
+    };
+
+
+  </script>
 </body>
 </html>
