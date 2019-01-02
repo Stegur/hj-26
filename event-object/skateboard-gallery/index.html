@@ -34,4 +34,26 @@
     </a>
   </nav>
 </body>
+<script>
+
+    const nav = document.getElementById('nav');
+    const img = document.getElementById('view');
+    const links = nav.getElementsByTagName('a');
+    //console.log(img)
+
+    function some(event) {
+        event.preventDefault();
+        for (link of links){
+            link.classList.remove('gallery-current');
+        }
+        this.classList.add('gallery-current');
+        img.src = this.href;
+    }
+
+    for (link of links){
+        link.addEventListener('click', some);
+    }
+
+
+</script>
 </html>
