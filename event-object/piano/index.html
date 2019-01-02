@@ -25,5 +25,86 @@
       <audio src=""></audio>
     </li>
   </ul>
+  <script>
+
+      const piano = document.getElementsByClassName('set')[0];
+      const btns = piano.getElementsByTagName('li');
+      const first = btns[0].getElementsByTagName('audio')[0];
+      const second = btns[1].getElementsByTagName('audio')[0];
+      const third = btns[2].getElementsByTagName('audio')[0];
+      const fourth = btns[3].getElementsByTagName('audio')[0];
+      const fifth = btns[4].getElementsByTagName('audio')[0];
+      //console.log(btns[0]);
+
+      function down(event) {
+          switch (event.code) {
+              case 'AltLeft':
+                  piano.classList.remove('middle');
+                  piano.classList.remove('lower');
+                  piano.classList.add('higher');
+                  changeSrc();
+                  break;
+              case 'ShiftLeft':
+                  piano.classList.remove('middle');
+                  piano.classList.remove('higher');
+                  piano.classList.add('lower');
+                  changeSrc();
+                  break;
+          }
+      }
+
+      function keyUp(event) {
+          switch (event.code) {
+              case 'AltLeft':
+                  piano.classList.remove('higher');
+                  piano.classList.remove('lower');
+                  piano.classList.add('middle');
+                  changeSrc();
+                  break;
+              case 'ShiftLeft':
+                  piano.classList.remove('higher');
+                  piano.classList.remove('lower');
+                  piano.classList.add('middle');
+                  changeSrc();
+                  break;
+            }
+      }
+
+      document.addEventListener('keydown', down);
+      document.addEventListener('keyup', keyUp);
+
+      changeSrc();
+      function changeSrc() {
+        if (piano.classList.contains('middle')) {
+            first.src = 'sounds/middle/first.mp3';
+            second.src = 'sounds/middle/second.mp3';
+            third.src = 'sounds/middle/third.mp3';
+            fourth.src = 'sounds/middle/fourth.mp3';
+            fifth.src = 'sounds/middle/fifth.mp3';
+        } else if (piano.classList.contains('lower')){
+            first.src = 'sounds/lower/first.mp3';
+            second.src = 'sounds/lower/second.mp3';
+            third.src = 'sounds/lower/third.mp3';
+            fourth.src = 'sounds/lower/fourth.mp3';
+            fifth.src = 'sounds/lower/fifth.mp3';
+        } else if (piano.classList.contains('higher')){
+            first.src = 'sounds/higher/first.mp3';
+            second.src = 'sounds/higher/second.mp3';
+            third.src = 'sounds/higher/third.mp3';
+            fourth.src = 'sounds/higher/fourth.mp3';
+            fifth.src = 'sounds/higher/fifth.mp3';
+        }
+    }
+      changeSrc();
+
+      btns[0].addEventListener('click', () => first.play());
+      btns[1].addEventListener('click', () => second.play());
+      btns[2].addEventListener('click', () => third.play());
+      btns[3].addEventListener('click', () => fourth.play());
+      btns[4].addEventListener('click', () => fifth.play());
+
+      //console.log(first);
+
+  </script>
 </body>
 </html>
