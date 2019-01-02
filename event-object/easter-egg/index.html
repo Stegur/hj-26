@@ -45,5 +45,41 @@
       </svg>
     </div>
   </main>
+  <script>
+
+      const nav = document.getElementsByTagName('nav')[0];
+      const secret = document.getElementsByClassName('secret')[0];
+
+      const text = [];
+
+      function showMenu(event){
+          if (event.code === 'KeyT' && event.ctrlKey && event.altKey) {
+              nav.classList.toggle('visible')
+          }
+      }
+
+      function check(event){
+          text.push(event.code);
+          if (text.join('').includes('KeyYKeyTKeyNKeyJKeyKKeyJKeyUKeyBKeyZ')) {
+              secret.classList.add('visible');
+          }
+          console.log(event);
+          console.log(text);
+      }
+
+      document.addEventListener('keydown', showMenu);
+      document.addEventListener('keydown', check);
+
+      function showKey(event) {
+          if (event.repeat) {
+              console.log(`Повторное нажатие ${event.code}`);
+          } else {
+              console.log(`Нажата ${event.code}`);
+          }
+      }
+      document.addEventListener('keydown', showKey);
+
+
+  </script>
 </body>
 </html>
